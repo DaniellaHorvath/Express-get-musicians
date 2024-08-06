@@ -20,5 +20,21 @@ app.get("/bands", async (req, res) => {
     res.json(bands);
 })
 
+// CREATE -GET (Part-2)
+
+app.get("/musicians/:id", async (req, res) => {
+    const musicians = await Musician.findByPk(req.params.id);
+
+    if(musicians){
+        res.json(musicians)
+    }else{
+        res.status(404).json({ error: "Musicians not found!"})
+    }
+})
+
+
+
+
+
 
 module.exports = app;
